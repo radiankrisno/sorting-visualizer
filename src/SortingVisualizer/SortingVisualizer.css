@@ -1,0 +1,44 @@
+.array-container {
+    position: absolute;
+    left: 100px;
+    background: #c6c6c6;
+}
+  
+.array-bar {
+    width: 5px;
+    display: inline-block;
+    margin: 0 1px;
+}
+
+#top {
+    text-align: left;
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-bottom: 5px;
+    display: flex;
+    justify-content: space-between;
+}
+
+#top > div > button {
+    border-radius: 2px;
+    color: #f2f2f2;
+    cursor: default;
+    font-size: 14px;
+    width: 130px;
+    height:36px;
+    vertical-align: bottom;
+    background: #4285F4;
+    border-radius: 5px;
+    border-color: #4285C4;
+}
+
+#top > div > button:hover {
+    box-shadow: 0 1px 1px #4285c4;
+    box-shadow: 0 1px 1px #4285c4;
+    color: #222;
+}
+
+#top {
+    background: #4285F4;
+    padding-top: 5px;
+}
