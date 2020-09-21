@@ -43,12 +43,11 @@ export default class SortingVisualizer extends React.Component {
     restoreButtons(){
         const array = this.state.buttons;
         for(let i = 0; i < array.length; i++){
-            document.getElementById(array[i]).disabled = false;
+            document.getElementById(array[i]).removeAttribute("disabled");
         }
     }
 
     bubbleSort(){
-        this.disableButtons();
         const animations = BubbleSortAnimations(this.state.array);
         for (let i = 0; i < animations.length; i++) {
             const arrayBars = document.getElementsByClassName('array-bar');
@@ -70,11 +69,10 @@ export default class SortingVisualizer extends React.Component {
                 }, i * animationSpeed);
             }
         }
-        this.restoreButtons();
+        setTimeout(() => this.restoreButtons(), animations.length * animationSpeed);
     }
 
     selectionSort(){
-        this.disableButtons();
         const animations = SelectionSortAnimations(this.state.array);
         let color = secondary;
         for(let i = 0; i < animations.length; i++) {
@@ -97,11 +95,10 @@ export default class SortingVisualizer extends React.Component {
                 }, i * animationSpeed);
             }
         }
-        this.restoreButtons();
+        setTimeout(() => this.restoreButtons(), animations.length * animationSpeed);
     }
 
     insertionSort(){
-        this.disableButtons();
         const animations = InsertionSortAnimations(this.state.array);
         let color = secondary;
         for (let i = 0; i < animations.length; i++) {
@@ -124,11 +121,10 @@ export default class SortingVisualizer extends React.Component {
                 }, i * animationSpeed);
             }
         }
-        this.restoreButtons();
+        setTimeout(() => this.restoreButtons(), animations.length * animationSpeed);
     }
 
     quickSort(){
-        this.disableButtons();
         const animations = QuickSortAnimations(this.state.array);
         let color = secondary;
         for (let i = 0; i < animations.length; i++) {
@@ -151,11 +147,10 @@ export default class SortingVisualizer extends React.Component {
                 }, i * animationSpeed);
             }
         }
-        this.restoreButtons();
+        setTimeout(() => this.restoreButtons(), animations.length * animationSpeed);
     }
 
     mergeSort(){
-        this.disableButtons();
         const animations = MergeSortAnimations(this.state.array);
         for (let i = 0; i < animations.length; i++) {
             const arrayBars = document.getElementsByClassName('array-bar');
@@ -177,7 +172,7 @@ export default class SortingVisualizer extends React.Component {
                 }, i * animationSpeed);
             }
         }
-        this.restoreButtons();
+        setTimeout(() => this.restoreButtons(), animations.length * animationSpeed);
     }
 
     render(){
@@ -189,11 +184,11 @@ export default class SortingVisualizer extends React.Component {
                         <button id="reset" onClick={() => this.resetArray()}>Generate New Array</button>
                     </div>
                     <div>
-                        <button id="bubble" onClick={() => this.bubbleSort()}>Bubble Sort</button>
-                        <button id="selection" onClick={() => this.selectionSort()}>Selection Sort</button>
-                        <button id="insertion" onClick={() => this.insertionSort()}>Insertion Sort</button>
-                        <button id="quick" onClick={() => this.quickSort()}>Quick Sort</button>
-                        <button id="merge" onClick={() => this.mergeSort()}>Merge Sort</button>
+                        <button id="bubble" onClick={() => {this.bubbleSort(); this.disableButtons();}}>Bubble Sort</button>
+                        <button id="selection" onClick={() => {this.selectionSort(); this.disableButtons();}}>Selection Sort</button>
+                        <button id="insertion" onClick={() => {this.insertionSort(); this.disableButtons();}}>Insertion Sort</button>
+                        <button id="quick" onClick={() => {this.quickSort(); this.disableButtons();}}>Quick Sort</button>
+                        <button id="merge" onClick={() => {this.mergeSort(); this.disableButtons();}}>Merge Sort</button>
                     </div>
                 </div>
                     {array.map((value, idx) => (
