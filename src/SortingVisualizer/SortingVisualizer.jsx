@@ -4,7 +4,9 @@ import "./SortingVisualizer.css";
 
 const animationSpeed = 1;
 
-const barNumbers = 150;
+const barNumbers = Math.floor(window.innerWidth / 10);
+
+const height = window.innerHeight - 50;
 
 const primary = "#4285F4";
 
@@ -27,9 +29,9 @@ export default class SortingVisualizer extends React.Component {
     resetArray(){
         const array = [];
         for(let i = 0; i < barNumbers; i++){
-            array.push(randomIntFromInterval(5, 520));
+            array.push(randomIntFromInterval(5, height));
         }
-        array.push(520);
+        array.push(height);
         this.setState({array: array});
     }
 
